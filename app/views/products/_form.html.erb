@@ -20,8 +20,9 @@
     <%= f.text_area :description, rows: 6 %>
   </div>
   <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+  	<%= image_tag(@product.image_url, :width => 80) if @product.image_url.present? %><br>
+    
+    <%= f.file_field :image_url %>
   </div>
   <div class="field">
     <%= f.label :price %><br>

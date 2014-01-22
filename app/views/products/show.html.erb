@@ -7,12 +7,12 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+  <%= strip_tags(@product.description) %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <strong>Image url:</strong><br>
+  <%= image_tag(@product.image_url, :width => 80) if @product.image_url.present? %>
 </p>
 
 <p>
