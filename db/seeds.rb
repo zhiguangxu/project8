@@ -17,7 +17,7 @@ Product.create!(title: 'CoffeeScript',
   shows you how to hold onto all the power and flexibility of JavaScript
   while writing clearer, cleaner, and safer code.
       </p>},
-  image_url:   open('/Users/zxu/Documents/workspace/depot/app/assets/images/cs.jpg'),    
+  image_url:   open('app/assets/images/cs.jpg'),    
   price: 36.00)
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
@@ -27,7 +27,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         out there. If you need to get working programs delivered fast,
         you should add Ruby to your toolbox.
       </p>},
-  image_url: open('/Users/zxu/Documents/workspace/depot/app/assets/images/ruby.jpg'),
+  image_url: open('app/assets/images/ruby.jpg'),
   price: 49.95)
 # . . .
 
@@ -41,5 +41,5 @@ Product.create!(title: 'Rails Test Prescriptions',
         procedures for Rails 2 and Rails 3, and introduces popular add-ons,
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
-  image_url: open('/Users/zxu/Documents/workspace/depot/app/assets/images/rtp.jpg'),
+  image_url: open('app/assets/images/rtp.jpg'),
   price: 34.95)
