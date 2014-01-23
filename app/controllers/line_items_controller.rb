@@ -27,6 +27,8 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
+    product.popularity = product.popularity+1
+    product.update_attributes(:popularity => product.popularity)
     
     @line_item = @cart.line_items.build(product: product)
     # Alternatively

@@ -2,12 +2,12 @@
 <p id="notice">
 	<%= notice %>
 </p>
-<% end %> 
+<% end %>
 
 <h1>Your Pragmatic Catalog</h1>
 <% @products.each do |product| %>
 <div class="entry">
-	<%= image_tag(product.image_url) %> 
+	<%= image_tag(product.image_url) %>
 	<h3><%= product.title %></h3>
 	<%= sanitize(product.description) %>
 	<div class="price_line">
@@ -16,5 +16,6 @@
 		<%= button_to 'Add to Cart', line_items_path(product_id: product) %>
 		-->
 	</div>
+	<p>This book has been put in some shopper cart for <%=pluralize product.popularity.to_i, 'time'%>.</p>
 </div>
 <% end %>
