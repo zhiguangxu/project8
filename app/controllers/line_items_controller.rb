@@ -30,7 +30,8 @@ class LineItemsController < ApplicationController
     product.popularity = product.popularity+1
     product.update_attributes(:popularity => product.popularity)
     
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product.id)
+    #@line_item = @cart.line_items.build(product: product)
     # Alternatively
     # @line_item = @cart.line_items.build
     # @line_item.product = product
