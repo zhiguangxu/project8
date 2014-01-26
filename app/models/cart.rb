@@ -15,6 +15,7 @@ class Cart < ActiveRecord::Base
     current_item.quantity = current_item.quantity - 1
     if current_item.quantity == 0
       current_item.destroy
+      return nil
     end
     current_item
   end
