@@ -13,6 +13,7 @@ class Cart < ActiveRecord::Base
   def decrement_product_quantity(line_item_id)
     current_item = line_items.find(line_item_id)
     current_item.quantity = current_item.quantity - 1
+    
     if current_item.quantity == 0
       current_item.destroy
       return nil

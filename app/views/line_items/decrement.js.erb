@@ -5,4 +5,4 @@ if ($('#cart tr').length == 1) { $('#cart').hide('blind', 1500); }
 $('#current_item').css({'background-color':'#88ff88'}).
   animate({'background-color':'#114411'}, 1000);
   
-$(".product_<%=@line_item.product.id%>").html("<%=pluralize @line_item.product.popularity.to_i, 'time'%>");
+$(".product_<%=@product.id%>").html("<%=pluralize @product.popularity.to_i, 'time'%>");
