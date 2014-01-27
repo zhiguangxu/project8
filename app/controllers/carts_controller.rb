@@ -58,8 +58,19 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
+    @products = []
+    if @cart.id == session[:cart_id]
+      @cart.line_items.each do |line_item|
+        product=line_item.product
+        product.popularity = product.popularity-line_item.quantity
+        product.update_attributes(:popularity => product.popularity)
+        @products << product
+      end
+      
+      @cart.destroy
+      session[:cart_id] = nil
+    end
+    
     respond_to do |format|
       format.html { redirect_to store_url }
       format.js {}

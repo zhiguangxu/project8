@@ -1,1 +1,5 @@
+<%@products.each do |product|%>
+	$(".product_<%=product.id%>").html("<%=pluralize product.popularity.to_i, 'time'%>");
+<%end%>
+
 $('#cart').html("<%=escape_javascript render @cart %>").hide('blind', 1000);
