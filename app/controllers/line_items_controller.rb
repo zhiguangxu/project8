@@ -74,7 +74,10 @@ class LineItemsController < ApplicationController
   # PATCH /line_items/1.json
   def decrement
     @line_item = @cart.decrement_product_quantity(@line_item.id)
-
+    product = @line_item.product
+    product.popularity = product.popularity-1
+    product.update_attributes(:popularity => product.popularity)
+    
     if @line_item
       respond_to do |format|
         if @line_item.save
