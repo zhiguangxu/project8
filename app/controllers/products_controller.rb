@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart, only: [:index, :show]
+  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -10,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @orders = @product.orders
   end
 
   # GET /products/new
