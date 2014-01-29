@@ -27,4 +27,15 @@ Depot::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { 
+        address: "pod51004.outlook.com",
+        port: 587, 
+        authentication: "login",
+        user_name: "zxu@valdosta.edu", 
+        password: "w1ath12Y", 
+        enable_starttls_auto: true
+  }
+
+  
 end
