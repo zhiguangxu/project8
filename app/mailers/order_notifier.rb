@@ -1,5 +1,5 @@
 class OrderNotifier < ActionMailer::Base
-  default from: 'Zhiguang Xu<zxu@valdosta.edu>'
+  default from: 'Depot Manager<no-reply@sendgrid.com>'
 
   def received(order)
     @order = order
