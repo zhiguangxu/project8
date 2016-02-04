@@ -27,15 +27,34 @@ Depot::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { 
-        address: "pod51004.outlook.com",
-        port: 587, 
-        authentication: "login",
-        user_name: "zxu@valdosta.edu", 
-        password: "w1ath12Y", 
-        enable_starttls_auto: true
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { 
+  #       address: "pod51004.outlook.com",
+  #       port: 587, 
+  #       authentication: "login",
+  #       user_name: "zxu@valdosta.edu", 
+  #       password: "w1ath12Y", 
+  #       enable_starttls_auto: true
+  # }
 
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :test
+  # host='localhost:3000'
+  # config.action_mailer.default_url_options = {host: host} 
   
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'localhost'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    # :user_name      => ENV['SENDGRID_USERNAME'],
+    # :password       => ENV['SENDGRID_PASSWORD'],
+    :user_name      => 'zhiguangxu',
+    :password       => 'wangr123',    
+    :domain         => 'localhost',
+    :enable_starttls_auto => true
+  }
 end
