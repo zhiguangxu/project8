@@ -1,5 +1,8 @@
 $('#notice').hide();
 
+if ($('#cart').length == 0) {location.reload();  }
+
+
 if ($('#cart tr').length == 1) { $('#cart').show('blind', 1000); }
 
 $('#cart').html("<%= escape_javascript render(@cart) %>");
