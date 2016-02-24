@@ -8,6 +8,7 @@ group :development do
   gem 'sqlite3', '1.3.8'
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'rails_layout'
 end
 
 gem 'carrierwave'
@@ -15,6 +16,9 @@ gem 'mini_magick'
 gem 'fog'
 gem 'faker'
 gem 'figaro'
+
+gem 'devise'
+gem 'foundation-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
