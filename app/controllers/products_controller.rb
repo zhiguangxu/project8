@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if (params[:seller_id])
+      @seller = Seller.find(params[:seller_id])
+      @products = @seller.products
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
@@ -30,7 +35,7 @@ class ProductsController < ApplicationController
     if current_account && current_account.accountable_type == "Seller"
         @product.seller = current_account.accountable
     end
-    
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
