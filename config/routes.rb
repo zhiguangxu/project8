@@ -8,8 +8,15 @@ Depot::Application.routes.draw do
   # patch '/buyers/:id/edit', :to=> "buyers#edit", as: 'buyer'
 
   resources :buyers, only: [:edit, :update]
-  resources :sellers, only: [:edit, :update]
+  resources :buyers do
+    resources :orders
+  end
   
+  resources :sellers, only: [:edit, :update]
+  resources :sellers do
+    resources :products
+  end
+
   resources :line_items do
     member do
       patch 'decrement'

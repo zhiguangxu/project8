@@ -27,6 +27,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    if current_account && current_account.accountable_type == "Seller"
+        @product.seller = current_account.accountable
+    end
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
