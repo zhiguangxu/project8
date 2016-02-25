@@ -2,6 +2,14 @@ Depot::Application.routes.draw do
   devise_for :accounts, :controllers => { :registrations => 'registrations' }
   resources :orders
 
+  # get '/sellers/:id/edit', :to=>"sellers#edit", as: 'edit_seller'
+  # patch '/buyers/:id/edit', :to=> "buyers#edit", as: 'buyer'
+  # get '/sellers/:id/edit', :to=>"sellers#edit", as: 'edit_seller'
+  # patch '/buyers/:id/edit', :to=> "buyers#edit", as: 'buyer'
+
+  resources :buyers, only: [:edit, :update]
+  resources :sellers, only: [:edit, :update]
+  
   resources :line_items do
     member do
       patch 'decrement'

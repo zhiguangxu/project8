@@ -54,7 +54,7 @@ class BuyersController < ApplicationController
   def update
     respond_to do |format|
       if @buyer.update(buyer_params)
-        format.html { redirect_to buyers_url, notice: "Buyer #{@buyer.name} was successfully updated." }
+        format.html { redirect_to root_url, notice: "Buyer #{@buyer.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

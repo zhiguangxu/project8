@@ -1,0 +1,16 @@
+<div>
+
+<%= form_for @seller do |f| %>
+  <div class="field">
+      <%= f.label :address %><br>
+      <%= f.text_area :address, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  </fieldset>
+<% end %>
+
+</div>
