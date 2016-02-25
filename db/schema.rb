@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224194719) do
+ActiveRecord::Schema.define(version: 20160225155831) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -67,7 +67,10 @@ ActiveRecord::Schema.define(version: 20160224194719) do
     t.string   "pay_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "buyer_id"
   end
+
+  add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"

@@ -27,6 +27,13 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    if current_account && current_account.accountable_type == "Buyer"
+        @order.buyer = current_account.accountable
+        @order.name = @order.buyer.name
+        @order.address = @order.buyer.address
+        @order.email = current_account.email
+        @order.pay_type = @order.buyer
+    end
   end
 
   # GET /orders/1/edit
@@ -38,6 +45,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+
+    if current_account && current_account.accountable_type == "Buyer"
+        @order.buyer = current_account.accountable
+    end
 
     respond_to do |format|
       if @order.save
