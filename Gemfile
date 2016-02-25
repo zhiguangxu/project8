@@ -16,6 +16,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'faker'
 gem 'figaro'
+gem 'jquery-turbolinks'
 
 gem 'devise'
 gem 'foundation-rails'

@@ -1,11 +1,27 @@
 <div>
 
 <%= form_for @buyer do |f| %>
+  <fieldset>
+  <legend>Enter Buyer Details</legend>
+
+  <div class="field">
+    <%= f.label :name, 'Name:' %>
+    <%= f.text_field :name, size: 40 %>
+  </div>
+
   <div class="field">
       <%= f.label :address %><br>
       <%= f.text_area :address, rows: 3, cols: 40 %>
   </div>
 
+  <div class="field">
+    <%= f.label :pay_type %><br>
+<!-- START_HIGHLIGHT -->
+    <%= f.select :pay_type, Order::PAYMENT_TYPES,
+                  prompt: 'Select a payment method' %>
+<!-- END_HIGHLIGHT -->
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

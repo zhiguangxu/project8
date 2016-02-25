@@ -13,9 +13,10 @@
 //= require jquery
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
-//= require turbolinks
 //= require foundation
 //= require_tree .
+//= require turbolinks
+
 $(function() {
   $(document).foundation();
 });
