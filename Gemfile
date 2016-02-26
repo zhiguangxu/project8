@@ -19,7 +19,7 @@ gem 'figaro'
 gem 'jquery-turbolinks'
 
 gem 'devise'
-gem 'foundation-rails'
+gem 'foundation-rails', '~>5.5.0'
 gem 'simple_form'
 
 # Use SCSS for stylesheets
