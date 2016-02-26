@@ -21,6 +21,7 @@ gem 'jquery-turbolinks'
 gem 'devise'
 gem 'foundation-rails', '~>5.5.0'
 gem 'simple_form'
+gem 'pundit'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0'
