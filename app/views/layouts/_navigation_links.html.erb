@@ -5,9 +5,12 @@
     <li><%= link_to 'Products', seller_products_path(current_account.accountable_id) %></li>
     <li><%= link_to 'Orders', seller_orders_path(current_account.accountable_id)  %></li>
   	<li><%= link_to 'Profile', edit_seller_path(current_account.accountable_id) %></li>
-  <% else %>
+  <% elsif current_account.accountable_type == "Buyer" %>
     <li><%= link_to 'Orders', buyer_orders_path(current_account.accountable_id) %></li>
     <li><%= link_to 'Profile', edit_buyer_path(current_account.accountable_id) %></li>
+  <% else %>
+    <li><%= link_to 'Products', products_path %></li>
+    <li><%= link_to 'Orders', orders_path %></li>
   <% end %>
   <li><%= link_to 'Settings', edit_account_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete' %></li>
