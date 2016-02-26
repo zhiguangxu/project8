@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  require 'will_paginate/array'
+
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -9,6 +11,16 @@ class OrdersController < ApplicationController
     if (params[:buyer_id])
       @buyer = Buyer.find(params[:buyer_id])
       @orders = @buyer.orders
+    elsif (params[:seller_id])
+      @seller = Seller.find(params[:seller_id])
+      @products=@seller.products
+      @all_orders = []
+      @products.each do |product|
+        @all_orders += product.orders
+      end
+      @all_orders = @all_orders.uniq {|order| order.id}
+      # Convert array of objects to ActiveRecord::Relation
+      @orders = Order.where(id: @all_orders.map(&:id))
     else
       @orders = Order.all
     end

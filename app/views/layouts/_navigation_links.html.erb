@@ -3,6 +3,7 @@
 <% if account_signed_in? %>
   <% if current_account.accountable_type == "Seller" %>
     <li><%= link_to 'Products', seller_products_path(current_account.accountable_id) %></li>
+    <li><%= link_to 'Orders', seller_orders_path(current_account.accountable_id)  %></li>
   	<li><%= link_to 'Profile', edit_seller_path(current_account.accountable_id) %></li>
   <% else %>
     <li><%= link_to 'Orders', buyer_orders_path(current_account.accountable_id) %></li>

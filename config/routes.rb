@@ -11,10 +11,13 @@ Depot::Application.routes.draw do
   resources :buyers do
     resources :orders
   end
-  
+
   resources :sellers, only: [:edit, :update]
   resources :sellers do
     resources :products
+  end
+  resources :seller do
+    resources :orders, only: [:index]
   end
 
   resources :line_items do
