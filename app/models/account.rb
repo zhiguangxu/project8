@@ -13,7 +13,4 @@ class Account < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :accountable, polymorphic: true
-
-  ACCOUNT_TYPES=["Buyer", "Seller"]
-  attr_accessor :type
 end
