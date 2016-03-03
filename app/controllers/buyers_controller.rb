@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:show, :edit, :update, :destroy]
-  
+  before_filter :authenticate_account!
+
   def pundit_user
     current_account
   end
@@ -15,7 +16,6 @@ class BuyersController < ApplicationController
     #   marker.lng buyer.longitude
     #   marker.title buyer.name
     # end
-    #authorize Buyer
     #raise "not authorized" unless BuyerPolicy.new(current_account, Buyer).index?
     authorize Buyer
   end
@@ -28,7 +28,6 @@ class BuyersController < ApplicationController
     #   marker.lng buyer.longitude
     #   marker.title buyer.name
     # end
-    authorize @buyer
   end
 
   # GET /buyers/new
@@ -86,7 +85,6 @@ class BuyersController < ApplicationController
     #   format.html { redirect_to buyers_url }
     #   format.json { head :no_content }
     # end
-    authorize @buyer
   end
 
   private

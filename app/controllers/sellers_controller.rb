@@ -1,5 +1,10 @@
 class SellersController < ApplicationController
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_account!
+
+  def pundit_user
+    current_account
+  end
 
   # GET /sellers
   # GET /sellers.json
@@ -11,7 +16,7 @@ class SellersController < ApplicationController
     #   marker.lng seller.longitude
     #   marker.title seller.name
     # end
-
+    authorize Seller
   end
 
   # GET /sellers/1
@@ -31,6 +36,7 @@ class SellersController < ApplicationController
 
   # GET /sellers/1/edit
   def edit
+    authorize @seller
   end
 
   # POST /sellers
@@ -52,6 +58,7 @@ class SellersController < ApplicationController
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
+    authorize @seller
     respond_to do |format|
       if @seller.update(seller_params)
         format.html { redirect_to root_url, notice: "Seller #{@seller.name} was successfully updated." }

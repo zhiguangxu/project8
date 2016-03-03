@@ -1,15 +1,22 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_account!
+
+  def pundit_user
+    current_account
+  end
 
   # GET /products
   # GET /products.json
   def index
-    if (params[:seller_id])
-      @seller = Seller.find(params[:seller_id])
-      @products = @seller.products
-    else
-      @products = Product.all
-    end
+    # if (params[:seller_id])
+    #   @seller = Seller.find(params[:seller_id])
+    #   @products = @seller.products
+    # else
+    #   @products = Product.all
+    # end
+    authorize Product 
+    @products = policy_scope(Product)
   end
 
   # GET /products/1
