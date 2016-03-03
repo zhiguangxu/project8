@@ -1,5 +1,9 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:show, :edit, :update, :destroy]
+  
+  def pundit_user
+    current_account
+  end
 
   # GET /buyers
   # GET /buyers.json
@@ -11,7 +15,9 @@ class BuyersController < ApplicationController
     #   marker.lng buyer.longitude
     #   marker.title buyer.name
     # end
-
+    #authorize Buyer
+    #raise "not authorized" unless BuyerPolicy.new(current_account, Buyer).index?
+    authorize Buyer
   end
 
   # GET /buyers/1
@@ -22,6 +28,7 @@ class BuyersController < ApplicationController
     #   marker.lng buyer.longitude
     #   marker.title buyer.name
     # end
+    authorize @buyer
   end
 
   # GET /buyers/new
@@ -31,6 +38,8 @@ class BuyersController < ApplicationController
 
   # GET /buyers/1/edit
   def edit
+    #raise "not authorized" unless BuyerPolicy.new(current_account, @buyer).edit?
+    authorize @buyer
   end
 
   # POST /buyers
@@ -52,6 +61,7 @@ class BuyersController < ApplicationController
   # PATCH/PUT /buyers/1
   # PATCH/PUT /buyers/1.json
   def update
+    authorize @buyer
     respond_to do |format|
       if @buyer.update(buyer_params)
         format.html { redirect_to root_url, notice: "Buyer #{@buyer.name} was successfully updated." }
@@ -76,6 +86,7 @@ class BuyersController < ApplicationController
     #   format.html { redirect_to buyers_url }
     #   format.json { head :no_content }
     # end
+    authorize @buyer
   end
 
   private
