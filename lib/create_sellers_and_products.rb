@@ -7,10 +7,13 @@ end
 
 Account.transaction do
   Account.create( :email => 'dave@depot.com', :password => 'changeme', :password_confirmation => 'changeme', 
+                  :role => "Seller",
                   :accountable => Seller.find_by_name("Dave"))
   Account.create( :email => 'mary@depot.com', :password => 'changeme', :password_confirmation => 'changeme', 
+                  :role => "Seller",
                   :accountable => Seller.find_by_name("Mary"))
   Account.create( :email => 'bob@depot.com', :password => 'changeme', :password_confirmation => 'changeme', 
+                  :role => "Seller",
                   :accountable => Seller.find_by_name("Bob"))
 end
 Product.transaction do    

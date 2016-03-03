@@ -1,9 +1,9 @@
 class Account < ActiveRecord::Base
-  enum role: [:pending, :regular, :vip]
+  enum role: [:Buyer, :Seller, :Admin]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :Buyer
   end
 
 

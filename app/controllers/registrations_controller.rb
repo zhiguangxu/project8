@@ -6,10 +6,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
   	super
-    if (params[:account][:type]=="Buyer")
-  	 @account.accountable = Buyer.new
-    else
+    if (params[:account][:role]=="Buyer")
+  	  @account.accountable = Buyer.new
+    elsif (params[:account][:role]=="Seller")
       @account.accountable = Seller.new
+    else
+      
     end
   	@account.save!
   end
