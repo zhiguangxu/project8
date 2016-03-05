@@ -14,6 +14,14 @@ class ProductPolicy
     @current_account.Admin? or @current_account == @product.seller.account
   end
 
+  def new?
+    @current_account.Seller?
+  end
+
+  def create?
+    @current_account.Seller?
+  end
+
   def edit?
     @current_account.Admin? or @current_account == @product.seller.account
   end
@@ -23,8 +31,7 @@ class ProductPolicy
   end
 
   def destroy?
-    return false if @current_account == @product.seller.account
-    @current_account.Admin?
+    @current_account.Admin? or @current_account == @product.seller.account
   end
 
   class Scope < Struct.new(:current_account, :model)
