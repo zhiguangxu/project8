@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @products = @order.products
+    authorize @order
   end
 
   # GET /orders/new
@@ -65,6 +66,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    authorize @order
   end
 
   # POST /orders
@@ -72,6 +74,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+
 
     if current_account && current_account.accountable_type == "Buyer"
         @order.buyer = current_account.accountable
@@ -96,6 +99,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    authorize @order
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -110,6 +114,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    authorize @order
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url }

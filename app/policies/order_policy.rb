@@ -3,7 +3,7 @@ class OrderPolicy
 
   def initialize(current_account, model)
     @current_account = current_account
-    @product = model
+    @order = model
   end
 
   def index?
@@ -11,20 +11,21 @@ class OrderPolicy
   end
 
   def show?
-    @current_account.Admin? or @current_account == @product.seller.account
+    @current_account.Admin? or 
+    (@current_account.Buyer? and @current_account == @order.buyer.account) or
+    (@current_account.Seller? and @current_account.accountable.products & @order.products)
   end
 
   def edit?
-    @current_account.Admin? or @current_account == @product.seller.account
+    @current_account.Admin? or @current_account == @order.buyer.account 
   end
 
   def update?
-    @current_account.Admin? or @current_account == @product.seller.account
+    @current_account.Admin? or @current_account == @order.buyer.account 
   end
 
   def destroy?
-    return false if @current_account == @product.seller.account
-    @current_account.Admin?
+    @current_account.Admin? or @current_account == @order.buyer.account 
   end
 
   class Scope < Struct.new(:current_account, :model)
