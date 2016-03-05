@@ -10,9 +10,9 @@ class SellerPolicy
     @current_account.Admin?
   end
 
-  def show?
-    @current_account.Admin? or @current_account == @seller.account
-  end
+  # def show?
+  #   @current_account.Admin? or @current_account == @seller.account
+  # end
 
   def edit?
     @current_account.Admin? or @current_account == @seller.account

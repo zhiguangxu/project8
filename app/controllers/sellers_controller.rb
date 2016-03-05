@@ -17,6 +17,7 @@ class SellersController < ApplicationController
     #   marker.title seller.name
     # end
     authorize Seller
+    @sellers = Seller.all
   end
 
   # GET /sellers/1
@@ -83,6 +84,13 @@ class SellersController < ApplicationController
     #   format.html { redirect_to sellers_url }
     #   format.json { head :no_content }
     # end
+    authorize @seller
+
+    @seller.destroy
+    respond_to do |format|
+      format.html { redirect_to sellers_url }
+      format.json { head :no_content }
+    end
   end
 
   private

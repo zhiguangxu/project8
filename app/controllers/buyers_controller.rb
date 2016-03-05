@@ -18,6 +18,7 @@ class BuyersController < ApplicationController
     # end
     #raise "not authorized" unless BuyerPolicy.new(current_account, Buyer).index?
     authorize Buyer
+    @buyers = Buyer.all
   end
 
   # GET /buyers/1
@@ -85,6 +86,13 @@ class BuyersController < ApplicationController
     #   format.html { redirect_to buyers_url }
     #   format.json { head :no_content }
     # end
+    authorize @buyer
+
+    @buyer.destroy
+    respond_to do |format|
+      format.html { redirect_to buyers_url }
+      format.json { head :no_content }
+    end
   end
 
   private

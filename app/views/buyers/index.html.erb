@@ -1,0 +1,25 @@
+<h3>Listing Buyers</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Pay type</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buyers.each do |buyer| %>
+      <tr>
+        <td><%= buyer.name %></td>
+        <td><%= buyer.address %></td>
+        <td><%= buyer.pay_type %></td>
+        <td><%= link_to 'Edit', edit_buyer_path(buyer)%></td>
+        <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

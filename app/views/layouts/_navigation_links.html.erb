@@ -11,6 +11,8 @@
   <% else %>
     <li><%= link_to 'Products', products_path %></li>
     <li><%= link_to 'Orders', orders_path %></li>
+    <li><%= link_to 'Buyers', buyers_path %></li>
+    <li><%= link_to 'Sellers', sellers_path %></li>
   <% end %>
   <li><%= link_to 'Settings', edit_account_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete' %></li>
