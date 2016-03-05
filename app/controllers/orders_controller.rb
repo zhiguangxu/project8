@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  # before_filter :authenticate_account!
+  before_filter :authenticate_account!, only: [:index]
 
   def pundit_user
     current_account
