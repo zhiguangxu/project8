@@ -22,6 +22,7 @@ gem 'devise'
 gem 'foundation-rails', '~>5.5.0'
 gem 'simple_form'
 gem 'pundit'
+gem 'administrate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0'
@@ -45,7 +46,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'will_paginate'
+#gem 'will_paginate'
+gem 'kaminari'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

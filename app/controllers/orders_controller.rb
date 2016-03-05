@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  require 'will_paginate/array'
+  #require 'will_paginate/array'
 
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
@@ -33,7 +33,8 @@ class OrdersController < ApplicationController
 
     authorize Order 
     @orders = policy_scope(Order)
-    @orders = @orders.order('created_at desc').paginate(page: params[:page],per_page: 10)
+    #@orders = @orders.order('created_at desc').paginate(page: params[:page],per_page: 10)
+    @orders = @orders.order('created_at desc').page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
