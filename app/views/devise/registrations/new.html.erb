@@ -10,7 +10,7 @@
     <%= f.input :password_confirmation, required: true %>
     <fieldset>
       <legend>Select a Role</legend>
-      <%= f.select(:role, Account.roles.keys.map {|role| [role.titleize,role]}) %>
+      <%= f.select(:role, Account.roles.keys.map {|role| [role.titleize,role]}, :disabled => ['Admin']) %>
      </fieldset>
   </div>
 
